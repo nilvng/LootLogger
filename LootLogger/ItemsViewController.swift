@@ -30,7 +30,6 @@ class ItemsViewController : UITableViewController{
     // add button
     @IBAction func addItem(_ sender: UIBarButtonItem){
         let item = itemStore.createItem()
-//        tableView.reloadData()
 
         for sectionNum in 0..<itemStore.items.count{
             if let row = itemStore.items[sectionNum].firstIndex(where: {$0 == item}){
@@ -132,7 +131,7 @@ class ItemsViewController : UITableViewController{
     // passing data to detailViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showItem":
+        case "showItem": // identifier name of transition to next view declared in Storyboard
             if let indexPath = tableView.indexPathForSelectedRow{
                 let item = itemStore.items[indexPath.section][indexPath.row]
                 let detailViewController = segue.destination as! DetailViewController

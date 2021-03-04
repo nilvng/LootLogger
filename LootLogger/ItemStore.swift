@@ -16,20 +16,19 @@ class ItemStore {
         
         return documentDirectory.appendingPathComponent("items.plist")
     }()
+
         
-    @objc func saveChanges() -> Bool {
-        do {
-            let encoder = PropertyListEncoder()
+    @objc func saveChanges() throws {
+        let encoder = PropertyListEncoder()
 
-            let data = try encoder.encode(items)
-            try data.write(to: itemArchiveURL, options: [.atomic])
-            print("Saved all items")
-            return true
-
-        } catch let encodingError { // explicit error name
-            print("Error coding item \(encodingError)")
-            return false
+        guard let data = try? encoder.encode(items) else {
+            throw Error.encodingError
         }
+        guard let _ = try? data.write(to: itemArchiveURL, options: [.atomic]) else {
+            throw Error.writingError
+        }
+        print("Saved all items")
+
     }
     
     init() {
@@ -39,12 +38,18 @@ class ItemStore {
             let unarchiver = PropertyListDecoder()
             let items = try unarchiver.decode([[Item]].self, from: data)
             self.items = items
-        } catch {
-            print("Error in retrieve data: \(error)")
+            
+            let notificationCenter = NotificationCenter()
+            notificationCenter.addObserver(self, selector: #selector(saveChanges), name: UIScene.didEnterBackgroundNotification, object: nil)
+            
+        } catch Error.encodingError {
+            print("Could not encode item")
+        } catch Error.writingError {
+            print("Could save item to file")
+        } catch let error {
+            print("Error reading in save file: \(error)")
         }
-        // observe for scene sent to the background (app is closed) to save data
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(saveChanges), name: UIScene.didEnterBackgroundNotification, object: nil)
+        
     }
     
     @discardableResult func createItem() -> Item {
@@ -80,4 +85,10 @@ class ItemStore {
     }
     
     
+}
+
+
+enum Error : Swift.Error{
+    case encodingError
+    case writingError
 }

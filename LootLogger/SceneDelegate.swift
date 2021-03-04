@@ -20,9 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print(#function)
         // Create itemStore instance
         let itemStore = ItemStore()
+        let imageStore = ImageStore()
+        // Assess the item view and set up its properties
         let navController = window!.rootViewController as! UINavigationController
         let itemController = navController.topViewController as! ItemsViewController
         itemController.itemStore = itemStore
+        itemController.imageStore = imageStore
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

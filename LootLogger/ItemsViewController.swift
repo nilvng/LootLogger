@@ -11,6 +11,7 @@ class ItemsViewController : UITableViewController{
     
     //MARK: Properties
     var itemStore : ItemStore!
+    var imageStore : ImageStore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +108,10 @@ class ItemsViewController : UITableViewController{
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             let item = itemStore.items[indexPath.section][indexPath.row]
+            // remove item from the item store
             itemStore.removeItem(item)
+            // remove item's photo from the image store
+            imageStore.deleteImage(forKey: item.itemKey)
             
             tableView.performBatchUpdates({
                 tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -136,6 +140,7 @@ class ItemsViewController : UITableViewController{
                 let item = itemStore.items[indexPath.section][indexPath.row]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.item = item
+                detailViewController.imageStore = imageStore
             }
         default:
             preconditionFailure("Unexpected segue identifier")

@@ -17,6 +17,7 @@
 		C8B9CF4B25DE72E30066E01B /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9CF4A25DE72E30066E01B /* ItemsViewController.swift */; };
 		C8B9CF4E25DE73900066E01B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9CF4D25DE73900066E01B /* Item.swift */; };
 		C8B9CF5225DE7DC10066E01B /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9CF5125DE7DC10066E01B /* ItemStore.swift */; };
+		C8C8D92A25F0D8E900541111 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C8D92925F0D8E900541111 /* ImageStore.swift */; };
 		C8F0C60E25E8A6D90038E2CF /* DateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0C60D25E8A6D90038E2CF /* DateEditViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		C8B9CF4A25DE72E30066E01B /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		C8B9CF4D25DE73900066E01B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C8B9CF5125DE7DC10066E01B /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		C8C8D92925F0D8E900541111 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		C8F0C60D25E8A6D90038E2CF /* DateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				C8AD077C25E5D94100A5F0E2 /* ItemCell.swift */,
 				C8AD077F25E6A29700A5F0E2 /* DetailViewController.swift */,
 				C8F0C60D25E8A6D90038E2CF /* DateEditViewController.swift */,
+				C8C8D92925F0D8E900541111 /* ImageStore.swift */,
 			);
 			path = LootLogger;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				C8F0C60E25E8A6D90038E2CF /* DateEditViewController.swift in Sources */,
 				C8AD077D25E5D94100A5F0E2 /* ItemCell.swift in Sources */,
 				C8B9CF3625DE72D00066E01B /* AppDelegate.swift in Sources */,
+				C8C8D92A25F0D8E900541111 /* ImageStore.swift in Sources */,
 				C8B9CF5225DE7DC10066E01B /* ItemStore.swift in Sources */,
 				C8B9CF3825DE72D00066E01B /* SceneDelegate.swift in Sources */,
 				C8AD078025E6A29700A5F0E2 /* DetailViewController.swift in Sources */,

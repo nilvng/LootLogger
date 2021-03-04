@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HWo-xn-5JY">
-                                <rect key="frame" x="20" y="96" width="374" height="758"/>
+                                <rect key="frame" x="20" y="96" width="374" height="709"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H9v-fH-aJI">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -149,13 +149,13 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pma-4M-1Wt">
-                                        <rect key="frame" x="0.0" y="126" width="374" height="594"/>
+                                        <rect key="frame" x="0.0" y="126" width="374" height="545"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eF-2w-bWr">
-                                        <rect key="frame" x="0.0" y="728" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="679" width="374" height="30"/>
                                         <state key="normal" title="Change Date"/>
                                         <connections>
                                             <segue destination="jnI-rk-dvl" kind="show" identifier="editDate" id="UTe-Nn-iNY"/>
@@ -167,14 +167,27 @@
                                     <constraint firstItem="MIH-6k-UOi" firstAttribute="leading" secondItem="TWD-t1-UPS" secondAttribute="leading" id="tOD-U2-oZg"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1e-1E-lDl">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Item" systemItem="camera" id="pOo-op-dre">
+                                        <connections>
+                                            <action selector="choosePhotoSource:" destination="AcS-DE-YGs" id="oio-Xh-3q2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7kZ-zO-RPS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="7kZ-zO-RPS" firstAttribute="bottom" secondItem="HWo-xn-5JY" secondAttribute="bottom" constant="8" id="AoX-wD-rkp"/>
+                            <constraint firstItem="A1e-1E-lDl" firstAttribute="top" secondItem="HWo-xn-5JY" secondAttribute="bottom" constant="8" id="G59-Y9-9UE"/>
+                            <constraint firstItem="A1e-1E-lDl" firstAttribute="leading" secondItem="W7B-dB-7n3" secondAttribute="leading" id="HY0-6P-JoT"/>
                             <constraint firstItem="HWo-xn-5JY" firstAttribute="top" secondItem="7kZ-zO-RPS" secondAttribute="top" constant="8" id="Ikw-jd-weW"/>
                             <constraint firstItem="HWo-xn-5JY" firstAttribute="leadingMargin" secondItem="W7B-dB-7n3" secondAttribute="leadingMargin" id="Jj9-Qc-uXn"/>
+                            <constraint firstItem="7kZ-zO-RPS" firstAttribute="bottom" secondItem="A1e-1E-lDl" secondAttribute="bottom" id="W09-6V-bdC"/>
+                            <constraint firstAttribute="trailing" secondItem="A1e-1E-lDl" secondAttribute="trailing" id="pNa-b0-xZ2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HWo-xn-5JY" secondAttribute="trailingMargin" id="yGH-KA-DUa"/>
                         </constraints>
                         <connections>

@@ -18,6 +18,7 @@
 		C8B9CF4E25DE73900066E01B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9CF4D25DE73900066E01B /* Item.swift */; };
 		C8B9CF5225DE7DC10066E01B /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9CF5125DE7DC10066E01B /* ItemStore.swift */; };
 		C8C8D92A25F0D8E900541111 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C8D92925F0D8E900541111 /* ImageStore.swift */; };
+		C8CE95FA266DBFF700F9C16C /* items.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8CE95F9266DBFF700F9C16C /* items.plist */; };
 		C8F0C60E25E8A6D90038E2CF /* DateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0C60D25E8A6D90038E2CF /* DateEditViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		C8B9CF4D25DE73900066E01B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C8B9CF5125DE7DC10066E01B /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		C8C8D92925F0D8E900541111 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		C8CE95F9266DBFF700F9C16C /* items.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = items.plist; sourceTree = "<group>"; };
 		C8F0C60D25E8A6D90038E2CF /* DateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 				C8AD077F25E6A29700A5F0E2 /* DetailViewController.swift */,
 				C8F0C60D25E8A6D90038E2CF /* DateEditViewController.swift */,
 				C8C8D92925F0D8E900541111 /* ImageStore.swift */,
+				C8CE95F9266DBFF700F9C16C /* items.plist */,
 			);
 			path = LootLogger;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				C8B9CF4225DE72D20066E01B /* LaunchScreen.storyboard in Resources */,
 				C8B9CF3F25DE72D20066E01B /* Assets.xcassets in Resources */,
 				C8B9CF3D25DE72D00066E01B /* Main.storyboard in Resources */,
+				C8CE95FA266DBFF700F9C16C /* items.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

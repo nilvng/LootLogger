@@ -18,17 +18,19 @@ class ItemStore {
     }()
 
         
-    @objc func saveChanges() throws {
-        let encoder = PropertyListEncoder()
-
-        guard let data = try? encoder.encode(items) else {
-            throw Error.encodingError
+    @objc func saveChanges() -> Bool {
+        print("Saving items to: \(itemArchiveURL)")
+        
+        do{
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(items)
+            try data.write(to: itemArchiveURL)
+            print("Saved all items")
+            return true
+        } catch let encodingError{
+            print("Error encoding items: \(encodingError)")
+            return false
         }
-        guard let _ = try? data.write(to: itemArchiveURL, options: [.atomic]) else {
-            throw Error.writingError
-        }
-        print("Saved all items")
-
     }
     
     init() {
@@ -39,17 +41,15 @@ class ItemStore {
             let items = try unarchiver.decode([[Item]].self, from: data)
             self.items = items
             
-            let notificationCenter = NotificationCenter()
-            notificationCenter.addObserver(self, selector: #selector(saveChanges), name: UIScene.didEnterBackgroundNotification, object: nil)
-            
-        } catch Error.encodingError {
-            print("Could not encode item")
-        } catch Error.writingError {
-            print("Could save item to file")
         } catch let error {
             print("Error reading in save file: \(error)")
         }
-        
+        let notificationCenter = NotificationCenter.default
+        // auto save the list of items whenever users turn off the app
+        notificationCenter.addObserver(self,
+                                       selector:#selector(saveChanges),
+                                       name: UIScene.didEnterBackgroundNotification,
+                                       object: nil)
     }
     
     @discardableResult func createItem() -> Item {

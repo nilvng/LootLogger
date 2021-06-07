@@ -21,7 +21,6 @@ class DetailViewController: UIViewController,
     var item : Item! {
         didSet{
             navigationItem.title = item.name
-            
         }
     }
     
@@ -67,6 +66,7 @@ class DetailViewController: UIViewController,
         alertController.modalPresentationStyle = .popover
         alertController.popoverPresentationController?.barButtonItem = sender
         
+        // given user 2 options to provide image of their properties: from Camera or Library
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {_ in
                 print("Present camera")
@@ -82,13 +82,13 @@ class DetailViewController: UIViewController,
             print("Present photo library")
             let imageController = self.imagePicker(for: .photoLibrary)
             imageController.modalPresentationStyle = .popover
-            imageController.popoverPresentationController?.barButtonItem = sender
+            imageController.popoverPresentationController?.barButtonItem = sender // what is this?
             self.present(imageController, animated: true, completion: nil)
 
         })
         
         alertController.addAction(photoLibraryAction)
-        
+        // the third button for cancelling the function
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(cancelAction)
@@ -99,7 +99,7 @@ class DetailViewController: UIViewController,
     //MARK: ViewController methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        // when receive the item object, it will redesign the view
         nameField.text = item.name
         serialNumberField.text = item.serialNumber
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueDollars))
@@ -113,13 +113,15 @@ class DetailViewController: UIViewController,
         
         // dismiss the keyboard if any
         view.endEditing(true)
-        
+        // update item according to corresponding text field
         item.name = nameField.text ?? ""
         item.serialNumber = serialNumberField.text
         if let valueText = valueField.text,
            let value = numberFormatter.number(from: valueText){
+            // only assign if the inputed value is valid value
             item.valueDollars = value.doubleValue
         } else {
+            // else return to its default value: 0
             item.valueDollars = 0
         }
     }
@@ -140,6 +142,7 @@ class DetailViewController: UIViewController,
     }
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        // close the keyboard if the background is tapped
         view.endEditing(true)
     }
     

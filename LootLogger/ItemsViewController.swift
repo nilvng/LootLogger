@@ -37,7 +37,7 @@ class ItemsViewController : UITableViewController{
                 let index = IndexPath(row: row, section: sectionNum) //TODO: add item at section? done
                 tableView.performBatchUpdates({
                     if row == 0{
-                        tableView.deleteRows(at: [index], with: .automatic)
+                        tableView.deleteRows(at: [index], with: .automatic) // delete row "No Item", which is not in the itemStore so the target row is still 0
                     }
                     tableView.insertRows(at: [index], with: .automatic)
 
@@ -116,7 +116,7 @@ class ItemsViewController : UITableViewController{
             tableView.performBatchUpdates({
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 if indexPath.row == 0{
-                    tableView.insertRows(at: [indexPath], with: .automatic)
+                    tableView.insertRows(at: [indexPath], with: .automatic) // insert "No item" row for displaying
                 }
 
             }, completion: {_ in print("done add row, delete constant row")})

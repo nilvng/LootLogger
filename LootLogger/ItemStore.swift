@@ -8,7 +8,7 @@
 import UIKit
 
 class ItemStore {
-    var items : [[Item]] = [[], []]
+    var items = [Item]()
     let itemArchiveURL : URL = {
         
         let documentDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -38,7 +38,7 @@ class ItemStore {
         do {
             let data = try Data(contentsOf: itemArchiveURL)
             let unarchiver = PropertyListDecoder()
-            let items = try unarchiver.decode([[Item]].self, from: data)
+            let items = try unarchiver.decode([Item].self, from: data)
             self.items = items
             
         } catch let error {
@@ -55,23 +55,13 @@ class ItemStore {
     @discardableResult func createItem() -> Item {
         // create random item and put it into 2 categories for 2 table sections: >$50 or other
         let item = Item(random: true)
-        var section = 0
-        switch item.valueDollars {
-        case 0..<50:
-            section = 1
-        default:
-            section = 0
-        }
-        items[section].append(item)
+        items.append(item)
         return item
     }
     
     func removeItem(_ item: Item){
-        for section in 0..<items.count{
-            if let row = items[section].firstIndex(where: {$0 == item}){
-                items[section].remove(at: row)
-                break
-            }
+        if let row = items.firstIndex(where: {$0 == item}){
+            items.remove(at: row)
         }
     }
     
@@ -79,16 +69,11 @@ class ItemStore {
         if fromIndex == toIndex {
             return
         }
-        let movedItem = items[fromIndex.section][fromIndex.row]
-        items[fromIndex.section].remove(at: fromIndex.row)
-        items[toIndex.section].insert(movedItem, at: toIndex.row)
+        let movedItem = items[fromIndex.row]
+        items.remove(at: fromIndex.row)
+        items.insert(movedItem, at: toIndex.row)
     }
     
     
 }
 
-
-enum Error : Swift.Error{
-    case encodingError
-    case writingError
-}

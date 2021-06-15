@@ -41,6 +41,22 @@ class DetailViewController: UIViewController,
         return formatter
     }()
     
+    // Used by our scene delegate to return an instance of this class from our storyboard.
+    static func loadFromStoryboard() -> DetailViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        return storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+    }
+
+    
+    class func detailViewControllerForItem(_ item: Item, imageStore: ImageStore) -> UIViewController {
+        print("DetailVC: load from storyboard")
+        let detailViewController = loadFromStoryboard()
+        detailViewController!.item = item
+        detailViewController!.imageStore = imageStore
+        return detailViewController!
+    }
+
+    
     // MARK: ImagePickerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage

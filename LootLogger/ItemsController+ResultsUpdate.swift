@@ -33,7 +33,7 @@ extension ItemsViewController : UISearchResultsUpdating{
         }
         
         // Apply the filter results to the result table
-        if let resultController = searchController.searchResultsController as? ResultsTableController{
+        if let resultController = searchController.searchResultsController as? SuggestedSearchViewController{
             resultController.filteredItems = filtered
             resultController.tableView.reloadData()
         }

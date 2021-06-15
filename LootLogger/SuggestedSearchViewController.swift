@@ -30,9 +30,7 @@ class SuggestedSearchViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -51,7 +49,7 @@ class SuggestedSearchViewController: UITableViewController {
 
         // case for No items
         guard !filteredItems.isEmpty else {
-            cell.textLabel?.text = "No item"
+            cell.textLabel?.text = "Not found"
             return cell
         }
         
@@ -66,7 +64,7 @@ class SuggestedSearchViewController: UITableViewController {
         }
         print("ResultVC: did select row")
         // if a item is selected we will redirect to detail so we should inform mainController about that, which is our searchDelegate
-        searchDelegate.didSelectItem(item: filteredItems[indexPath.row])
+       searchDelegate.didSelectItem(item: filteredItems[indexPath.row])
     }
     
     // MARK: - Navigation

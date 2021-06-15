@@ -15,7 +15,7 @@ class ItemsViewController : UITableViewController{
     static var itemCellIdentifier = "ItemCell"
     
     var searchController : UISearchController!
-    var resultsTableController : ResultsTableController!
+    var resultsTableController : SuggestedSearchViewController!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -32,8 +32,8 @@ class ItemsViewController : UITableViewController{
         navigationItem.backButtonTitle = "Log"
         
         // Insert Search bar
-        resultsTableController = ResultsTableController()
-        //resultsTableController.suggestedSearchDelegate = self // So we can be notified when a suggested search token is selected.
+        resultsTableController = SuggestedSearchViewController()
+        resultsTableController.suggestedSearchDelegate = self // So we can be notified when a suggested search token is selected.
         searchController = UISearchController(searchResultsController: resultsTableController)
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .none
